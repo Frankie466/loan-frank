@@ -1,0 +1,86 @@
+{% extends 'loan/base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg rounded-4">
+                <div class="card-header bg-primary text-white py-3 rounded-top-4">
+                    <h4 class="mb-0"><i class="fas fa-user-circle me-2"></i>Profile Information</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="row g-3 mb-4">
+                            <!-- Personal Information -->
+                            <div class="col-md-6">
+                                <label class="form-label">Full Name</label>
+                                {{ form.full_name }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">ID Number</label>
+                                {{ form.id_number }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Date of Birth</label>
+                                {{ form.dob }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Phone Number</label>
+                                {{ form.phone_number }}
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Next of Kin -->
+                        <h5 class="mb-3"><i class="fas fa-user-friends me-2"></i>Next of Kin Details</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Name</label>
+                                {{ form.next_of_kin_name }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Phone Number</label>
+                                {{ form.next_of_kin_phone }}
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Employment Status -->
+                        <div class="mb-4">
+                            <label class="form-label">Employment Status</label>
+                            {{ form.employment_status }}
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary me-md-2">
+                                <i class="fas fa-arrow-left me-1"></i> Back to Dashboard
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i> Update Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-control, .form-select {
+        border-radius: 8px;
+        padding: 10px 15px;
+    }
+    .form-label {
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+    .card {
+        border: none;
+    }
+</style>
+{% endblock %}
