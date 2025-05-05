@@ -34,4 +34,4 @@ class Customer(models.Model):
         self.save()
 
     def calculate_processing_fee(self):
-        return 0.1 * self.loan_limit
+        return 0.07 * self.loan_limit
